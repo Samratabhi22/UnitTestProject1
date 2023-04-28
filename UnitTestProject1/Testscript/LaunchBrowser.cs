@@ -11,10 +11,10 @@ using System.Threading.Tasks;
 
 namespace UnitTestProject1.Testscript
 {
-   
+    //[TestClass]
     public class LaunchBrowser
     {
-        
+       // [TestMethod]
         public void method1()
         {
             //Q1:	Write a script to login to actiTIME application 
@@ -92,4 +92,6 @@ namespace UnitTestProject1.Testscript
             //driver.FindElement(By.id)
         }
     }
+
+    
 }
