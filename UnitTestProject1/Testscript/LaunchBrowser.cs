@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -93,10 +94,10 @@ namespace UnitTestProject1.Testscript
         }
     }
     //Q Child Window Popup
-    [TestClass]
+    //[TestClass]
     public class PrintAllWindowHAndles
     {
-        [TestMethod]
+       // [TestMethod]
         public void PrintAllWindows() {
             IWebDriver driver = new ChromeDriver();
             driver.Url = "https://secure.indeed.com/";
@@ -112,6 +113,39 @@ namespace UnitTestProject1.Testscript
                 Console.WriteLine(whs);
             }
             driver.Dispose();   
+        }
+    }
+    [TestClass]
+    public class HandlingSingleSelectListBOx{
+        [TestMethod]
+        public void SingleSelectListBox()
+        {
+            IWebDriver driver = new ChromeDriver ();
+            driver.Url = "https://www.facebook.com/";
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait= TimeSpan.FromSeconds(10);
+            driver.FindElement(By.XPath("//a[text()='Create new account']")).Click();
+
+            IWebElement date = driver.FindElement(By.XPath("//select[@title='Day']"));
+            SelectElement dAtE = new SelectElement(date);
+            dAtE.SelectByText("22");
+            Console.WriteLine("===========Day done========");
+
+            IWebElement month = driver.FindElement(By.Name("birthday_month"));
+            SelectElement mONth = new SelectElement(month);
+            mONth.SelectByText("Sep");
+            Console.WriteLine("===========Month done========");
+
+            IWebElement year = driver.FindElement(By.Name("birthday_year"));
+            SelectElement yEAr= new SelectElement(year);
+            yEAr.SelectByValue("1997");
+            Console.WriteLine("===========Year done========");
+
+
+
+
+
+
         }
     }
     
