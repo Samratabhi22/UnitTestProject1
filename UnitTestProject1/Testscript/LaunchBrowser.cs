@@ -75,10 +75,10 @@ namespace UnitTestProject1.Testscript
 
         }
     }
-    [TestClass]
+   // [TestClass]
     public class RemoveTextFromTextBox
     {
-        [TestMethod]
+       // [TestMethod]
         public void removeText()
         {
             IWebDriver driver = new ChromeDriver(); 
@@ -92,6 +92,27 @@ namespace UnitTestProject1.Testscript
             //driver.FindElement(By.id)
         }
     }
-
+    //Q Child Window Popup
+    [TestClass]
+    public class PrintAllWindowHAndles
+    {
+        [TestMethod]
+        public void PrintAllWindows() {
+            IWebDriver driver = new ChromeDriver();
+            driver.Url = "https://secure.indeed.com/";
+            driver.Manage().Window.Maximize();
+            driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(10);
+            driver.FindElement(By.Id("apple-signin-button")).Click();
+            driver.FindElement(By.Id("login-facebook-button")).Click();
+            System.Collections.ObjectModel.ReadOnlyCollection<string> allWhs = driver.WindowHandles;
+            int count = allWhs.Count;
+            Console.WriteLine(count);
+            foreach(string whs in allWhs) 
+            {
+                Console.WriteLine(whs);
+            }
+            driver.Dispose();   
+        }
+    }
     
 }
